@@ -9,30 +9,31 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR cmdLine, int cmdSho
 void NaturalLanguageProcessing::Window_Open(Win::Event& e)
 {
 	//________________________________________________________ lvResponse
-	lvResponse.Cols.Add(0, LVCFMT_LEFT, 100, L"Text");
-	lvResponse.Cols.Add(1, LVCFMT_RIGHT, 200, L"Type");
+	lvResponse.Cols.Add(0, LVCFMT_LEFT, 40, L"Line");
+	lvResponse.Cols.Add(1, LVCFMT_RIGHT, 70, L"Text");
+	lvResponse.Cols.Add(2, LVCFMT_RIGHT, 300, L"Type");
 	item = 0;
 }
 
-void NaturalLanguageProcessing::btSubmit_Click(Win::Event& e)
+void NaturalLanguageProcessing::tbx1_Change(Win::Event& e)
 {
-	lexicalAnalizer.setText(tbx1.Text);
-}
-
-void NaturalLanguageProcessing::bt2_Click(Win::Event& e)
-{
-	TokenW token;
-	wstring text;
-	text.clear();
-
-	if (lexicalAnalizer.getToken(token) == true)
+	if (tbx1.Text != L"")
 	{
-		lvResponse.Items.Add(item,token.text);
-		lvResponse.Items[item][1].Text = Sys::Convert::ToString(token.type);
-		item++;
+		lexicalAnalizer.setText(tbx1.Text);
+		vector<TokenW> tokens;
+		wstring text;
+		text.clear();
+		lvResponse.Items.DeleteAll();
+		item = 0;
+		if (lexicalAnalizer.getTokens(tokens) == true)
+		{
+			for (int i = 0; i < (int)tokens.size(); i++) {
+				lvResponse.Items.Add(item, Sys::Convert::ToString(tokens[i].line));
+				lvResponse.Items[item][1].Text = tokens[i].text;
+				lvResponse.Items[item][2].Text = tokens[i].getStringType();
+				item++;
+			}
+		}
 	}
-
-
-
 }
 

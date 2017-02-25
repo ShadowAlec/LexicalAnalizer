@@ -9,7 +9,9 @@
 #define TOKEN_SEPARATOR				64
 #define TOKEN_QUESTIONMARK			128
 #define TOKEN_OTHERSYMBOL			256
-#define TOKEN_EOS					512
+#define TOKEN_EXCLAMATION			512
+#define TOKEN_EOS					1024
+#define TOKEN_END_OF_TEXT			2048
 
 class TokenW
 {
@@ -19,5 +21,6 @@ public:
 	__int32 type;
 	wstring text;
 	int line;
+	wstring getStringType();
 };
 

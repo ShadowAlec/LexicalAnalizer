@@ -1,3 +1,8 @@
-﻿  NaturalLanguageProcessing.cpp
+﻿  LexicalAnalizer.cpp
+c:\users\usuario\desktop\tesis\win\naturallanguageprocessing\naturallanguageprocessing\lexicalanalizer.cpp(298): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+  Generating Code...
+  Compiling...
+  NaturalLanguageProcessing.cpp
+  Generating Code...
   NaturalLanguageProcessing.vcxproj -> C:\Users\USUARIO\Desktop\Tesis\Win\NaturalLanguageProcessing\Debug\NaturalLanguageProcessing.exe
   NaturalLanguageProcessing.vcxproj -> C:\Users\USUARIO\Desktop\Tesis\Win\NaturalLanguageProcessing\Debug\NaturalLanguageProcessing.pdb (Full PDB)

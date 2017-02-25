@@ -11,7 +11,6 @@ void NaturalLanguageProcessing::Window_Open(Win::Event& e)
 	//________________________________________________________ lvResponse
 	lvResponse.Cols.Add(0, LVCFMT_LEFT, 100, L"Text");
 	lvResponse.Cols.Add(1, LVCFMT_RIGHT, 200, L"Type");
-
 	item = 0;
 }
 
@@ -22,11 +21,22 @@ void NaturalLanguageProcessing::btSubmit_Click(Win::Event& e)
 
 void NaturalLanguageProcessing::bt2_Click(Win::Event& e)
 {
-	TokenW token;
-	if (lexicalAnalizer.getToken(token) == true) {
-		lvResponse.Items.Add(item, token.text );
-		lvResponse.Items[item][1].Text = Sys::Convert::ToString(token.type);
+	vector<TokenW> tokens;
+	wstring text;
+	text.clear();
+
+	if (lexicalAnalizer.getTokens(tokens) == true)
+	{
+		for (int i = 0; i < tokens.size(); i++) {
+			lvResponse.Items.Add(item, tokens[i].text);
+			lvResponse.Items[item][1].Text = tokens[i].getStringType();
+			item++;
+		}
 	}
-	item++;
+
+}
+
+void NaturalLanguageProcessing::tbx1_Change(Win::Event& e)
+{
 }
 
