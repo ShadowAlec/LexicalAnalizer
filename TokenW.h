@@ -21,6 +21,7 @@ public:
 	__int32 type;
 	wstring text;
 	int line;
+	vector<wstring> types;
 	wstring getStringType();
 };
 
